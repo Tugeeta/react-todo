@@ -1,6 +1,7 @@
-import  React from "react";
-function TodoListItem (props) {
-       const todo = props;  
+import  React from 'react';
+
+function TodoListItem ({todo}) {
+       
     return ( 
            <div>
             <li>

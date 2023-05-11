@@ -1,10 +1,12 @@
 import React from 'react';
+import TodoListItem from './TodoListItem';
+
 
 const todoList = [
-    {
-      Id:1,
+    { 
+      Id:1, 
       Title:"Pre-made Flower Basket:\n",
-      },
+  },
        {
        Id:2,
       Title:"Selection of Multicolor Flowers:\n",
@@ -18,21 +20,17 @@ const todoList = [
         Title:"Design Your Own Floral Arrangement:\n",
         },
       ];
-      
-function TodoList() {
-    return (
-        <div>
-<ul>
-        {todoList.map(function(item){
-               return (
-               <li key = {item.Id}>
-                <span>{item.Title}</span>
 
-      </li>
-               );
-        })}    
-           </ul>       
-      
+      function TodoList(newTodo) {
+        return (
+  <div>
+       <ul>
+        {todoList.map((newTodo)=> 
+           <TodoListItem key = {newTodo.Id} todo={newTodo}/>
+
+           )}
+    </ul>
+  
     </div>
   );
 }
