@@ -2,11 +2,20 @@ import  React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import {useState} from 'react';
-import TodoListItem from './TodoListItem';
+
 
 
 function App() {
- const [newTodo, setNewTodo] = useState('');
+ //const [newTodo, setNewTodo] = useState('');
+ const [todoList, setTodoList] = useState([]);
+
+
+ function addTodo(newTodo) {
+
+
+ setTodoList([...todoList, newTodo]);
+ }
+
  return (
    <div>
      <header>
@@ -14,13 +23,13 @@ function App() {
        <h2>Todo List</h2>
        </header>
 
-     <TodoList/>
-     <TodoListItem/>
+       <TodoList todoList={todoList}/>
+      
+        <AddTodoForm onAddTodo={addTodo}/> 
 
-     <AddTodoForm onAddTodo={(todoTitle)=> setNewTodo(todoTitle)} />
-        <p>
+        {/*<p>
          Displaying the Value of <strong>{newTodo}</strong>
-        </p>
+ </p>*/}
             </div>
   );
 }
