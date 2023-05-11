@@ -21,18 +21,19 @@ const todoList = [
         },
       ];
 
-      function TodoList(newTodo) {
+      function TodoList ({todoList, onRemoveTodo}) {
         return (
-  <div>
-       <ul>
-        {todoList.map((newTodo)=> 
-           <TodoListItem key = {newTodo.Id} todo={newTodo}/>
+          <div>
+          <ul>
+        {todoList.map((todo) => (
+         <TodoListItem key={todo.id} todo={todo}
+         onRemoveTodo={onRemoveTodo}
+         />
 
-           )}
-    </ul>
-  
-    </div>
-  );
-}
 
-export default TodoList;
+        ))};
+        </ul>
+        </div>
+         );
+        }  
+ export default TodoList;
