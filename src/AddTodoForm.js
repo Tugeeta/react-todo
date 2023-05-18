@@ -1,10 +1,7 @@
-import {useState} from 'react';
-import {InputWithLabel} from 'react';
+import {useState, InputWithLabel} from 'react';
 
 
-
-
-function AddTodoForm ({onAddTodo}) {
+const AddTodoForm = ({onAddTodo}) => {
   const[todoTitle, setTodoTitle] = useState('');
   const handleAddTodo =(event)=>{
       event.preventDefault();
@@ -26,7 +23,6 @@ function AddTodoForm ({onAddTodo}) {
 <h1>  Form </h1>
 <form onSubmit={handleAddTodo}>
 
-
 <InputWithLabel name ='todoTitle' value={todoTitle}
 onChange={handleTitleChange} autoFocus={true}>
   <strong>Title:</strong>
@@ -35,7 +31,7 @@ onChange={handleTitleChange} autoFocus={true}>
 <button type='submit'> Add </button>
 
 
-</form>
+    </form>
 </div>
 
 
