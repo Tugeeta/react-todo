@@ -1,8 +1,9 @@
-import InputWithLabel from 'react';
+import React from 'react';
 
 
  function InputWithLabel({children, Id, title, todoTitle, handleTitleChange}) {
- const inputRef = React.useRef();
+ 
+  const inputRef = React.useRef();
 
 
  React.useEffect(()=> {

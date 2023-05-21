@@ -11,7 +11,7 @@ import AddTodoForm from './AddTodoForm';
 
         );
 
-        const [isLoading, setIsLoading] = React.useState(true);
+        const [isLoading, setIsLoading] = useState(true);
   
 
    useEffect(() => {
@@ -51,14 +51,16 @@ import AddTodoForm from './AddTodoForm';
     <h1>Todo List</h1>
       <h3>Trendyfloristapp</h3>
       </header>
-      
       <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      
+       
+            
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-     
         
-        <AddTodoForm onAddTodo={addTodo}/>
+<AddTodoForm onAddTodo={addTodo}/>
+        
       )}
         
       
