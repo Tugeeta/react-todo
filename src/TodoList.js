@@ -20,8 +20,9 @@ const todoList = [
         Title:"Design Your Own Floral Arrangement:\n",
         },
       ];
-
-      function TodoList ({todoList, onRemoveTodo}) {
+        
+    
+      function TodoList({todoList, onRemoveTodo}) { 
         return (
           <div>
           <ul>
@@ -35,5 +36,5 @@ const todoList = [
         </ul>
         </div>
          );
-        }  
+        }
  export default TodoList;
