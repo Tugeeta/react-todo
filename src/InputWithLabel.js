@@ -1,20 +1,17 @@
-import React, {InputWithLabel} from 'react';
+import InputWithLabel from 'react';
 
 
-
-
-function InputWithLabel({children, Id, title, todoTitle, handleTitleChange}){
-
-
+ function InputWithLabel({children, Id, title, todoTitle, handleTitleChange}) {
  const inputRef = React.useRef();
 
 
  React.useEffect(()=> {
      inputRef.current.focus();
+ 
  });
 
 
-return (
+   return (
  <>
 <label htmlFor= 'Id' > {children} </label>
 &nbsp;
