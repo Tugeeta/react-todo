@@ -1,68 +1,61 @@
 import  React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
-       function App() {
-               
+       function App() {          
   const [todoList, setTodoList]= useState (
- 
   JSON.parse(localStorage.getItem('savedTodoList')) || []
-
-  )};
-
+  );
   const [isLoading, setIsLoading] = useState(true);
-  
-    async function fetchData (
-   
-        
-        useEffect = () => {
+
+        useEffect = (() => {
          fetchData () 
         }, []);
     
-   
-            const options = {
+    async function fetchData () {
+      try {          
+      const options = {
               method: 'GET',
               headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-            }},
+            },
+          };
           
             
-     url = (`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}\`,{
-          
-            });
-             try {    
-          const response = await fetch (url, options);
-               console.log(response);
-               const data = await response.json();
-               console.log("API Data:", data);
-             };
-
+          const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+             
+           const response = await fetch (url, options);
+              
              if (!response.ok) {
               const message = ('Error occurred: ${response.status}');
               throw new Error(message);               
-            };
+            }
       
-           
+            const data = await response.json();
+            console.log("Data:", data); 
             
-            const todos = data.records.map((Todo) => {
+            const todos = data.records.map((records) => ({
               Id: records.Id,
               Title: records.fields.Title
               
-           }
-             return (todos)      
-            
+           }));
+               
+             console.log("Todos:", todos);
 
-          )};
+          
             setTodoList(todos);
-            isLoading(false); 
+            setIsLoading(false); 
          } catch (error) {
             console.error(error.message);
+            setIsLoading(false); 
           
-         };
+         }
+        }
         
   
             
-  function addTodo(newTodo) {
+      function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
   }
 
@@ -70,10 +63,12 @@ import AddTodoForm from './AddTodoForm';
     const newTodoList = todoList.filter((todo) => todo.id !== id);
     setTodoList(newTodoList);
   }
-  ) };
-
+  
  return (
-<>
+<BrowserRouter>
+<Routes>
+  <Route path='/' exact element = {
+    <>
 
   <div>
     <header>
@@ -88,15 +83,28 @@ import AddTodoForm from './AddTodoForm';
       ) : (
         
 
-<TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+       <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
         
       )}
         
       
     </div>
    </>
-         );
-        }
+         
+        }></Route>
         
+        <Route path='/new' element = {
+          <h1>TrendyFlorist Check List</h1>}> 
+        </Route>
+         
+       
+    
+      </Routes>
+
+    </BrowserRouter>
+
+
+ );
+        }     
 
 export default App;
