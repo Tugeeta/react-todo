@@ -9,7 +9,7 @@ import AddTodoForm from './AddTodoForm';
   );
   const [isLoading, setIsLoading] = useState(true);
 
-        useEffect = (() => {
+        useEffect (() => {
          fetchData () 
         }, []);
     
@@ -24,11 +24,12 @@ import AddTodoForm from './AddTodoForm';
           
             
           const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
-             
+        
+        
            const response = await fetch (url, options);
               
              if (!response.ok) {
-              const message = ('Error occurred: ${response.status}');
+              const message = (`Error occurred: ${response.status}`);
               throw new Error(message);               
             }
       
@@ -36,8 +37,8 @@ import AddTodoForm from './AddTodoForm';
             console.log("Data:", data); 
             
             const todos = data.records.map((records) => ({
-              Id: records.Id,
-              Title: records.fields.Title
+              id: records.id,
+              title: records.fields.title
               
            }));
                
@@ -63,7 +64,6 @@ import AddTodoForm from './AddTodoForm';
     const newTodoList = todoList.filter((todo) => todo.id !== id);
     setTodoList(newTodoList);
   }
-  
  return (
 <BrowserRouter>
 <Routes>
