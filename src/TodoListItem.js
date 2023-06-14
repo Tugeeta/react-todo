@@ -1,7 +1,5 @@
 import  React from 'react';
 
-
-
 function TodoListItem ({todo, onRemoveTodo}) {
        const handleRemoveTodo = () => {
            onRemoveTodo(todo.id);
