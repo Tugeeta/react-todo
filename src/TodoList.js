@@ -2,7 +2,7 @@ import React from 'react';
 import TodoListItem from './TodoListItem';
 
 
-const todoList = [
+/*const todoList = [
     { 
       Id:1, 
       Title:"Pre-made Flower Basket:\n",
@@ -19,7 +19,7 @@ const todoList = [
       Id:4,
         Title:"Design Your Own Floral Arrangement:\n",
         },
-      ];
+      ];*/
         
     
       function TodoList({todoList, onRemoveTodo}) { 
